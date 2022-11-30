@@ -1,0 +1,108 @@
+    .box {
+        width: 80%;
+        height: 80%; 
+        border-radius: 70%;
+        overflow: hidden;
+        margin: auto;
+    }
+    .profile {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    .aboutme_head_font{
+        font-size: 20px;
+        font-weight: bolder;
+    }
+    .profile_name_font{
+        margin-top: 3%;
+        font-size: 25px;
+        font-weight: bolder;
+        color: black;
+    }
+    .profile_content_font{
+        font-size: 17px;
+        font-weight: bolder;
+        color: rgb(68, 66, 66);
+    }
+    .profile_content_under_font{
+        font-size: 10px;
+        color: rgb(182, 178, 178);
+        margin-top: 7%;
+    }
+    .dropdown_AboutMe{
+        background-color: #FAFAFA;
+        color: black;
+        font-weight: bolder;
+        text-align: center;
+        border: 2px solid gainsboro;
+        border-radius: 5px;
+        width: 30%;
+    }
+    .main_screen_left_content{
+        display: flex; 
+        flex-direction: column; 
+        text-align: center; 
+        margin-top: 10%;
+    }
+    .main_navbar{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        width: 100%;
+        margin: 0px 3%;
+    }
+    .main_screen{
+        display: flex; 
+        flex-direction: row; 
+        text-align: center; 
+        justify-content: center; 
+        padding-top: 4%; 
+        background-color: #FAFAFA;
+    }
+    .main_screen_left{
+        width: 400px; 
+        height: 100%; 
+        background: #FAFAFA; 
+        position: fixed; 
+        left: 3%; 
+        margin-top: 1%;
+    }
+    .main_screen_right{
+        width: 700px;
+        height: 3000px; 
+        margin-left: 300px;
+        margin-top: 1%;
+        background-color: #FAFAFA;
+    }
+    .main_screen_left_sidebar{
+        width: 20px;
+        height: 87%; 
+        position: fixed; 
+        right: 3%;
+        margin-top: 1%;
+    }
+    .navbar_profile_box{
+        width: 25px;
+        height: 25px; 
+        border-radius: 70%;
+        overflow: hidden; 
+        margin: auto;
+    }
+    .navbar_profile{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        margin-bottom: 4px;
+    }
+    .navbar_right{
+        display: flex; 
+        flex-direction: row; 
+        justify-content: space-between;
+    }
+
+    @media (max-width: 1300px) {
+    #main_screen_right {
+        display: none;
+    }
+    } 

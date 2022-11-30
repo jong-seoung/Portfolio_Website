@@ -1,0 +1,216 @@
+{%load static%}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Web_Portfolio</title>
+    <!-- 부트 스트랩 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+
+    <!-- 구글 머티리얼 아이콘-->
+    <link href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Symbols+Outlined|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp" rel="stylesheet">
+
+    <!-- 제이쿼리 -->
+    <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href ="static/css/mystyle.css" type="text/css">
+</head>
+
+<body style="background: #FAFAFA;">
+    <!-- 부트 스트랩 -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+
+    <!-- nav bar -->
+    <nav class="navbar navbar-expand-lg bg-white" style="position: fixed; z-index: 1; width: 100%; height: 6%;">
+        <div class="container-fluid">
+            <div class="main_navbar">
+                <!-- nav bar left-->
+                <div>
+                    <a class="navbar-brand" href="#">
+                        Web_Portfolio
+                    </a>
+                </div>
+
+                <!-- About Me dropdown-->
+                <div class="dropdown_AboutMe">
+                    <div class="dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            PROFILE
+                        </a>
+                        <div class="dropdown-menu" style="text-align: center; width: 100%; margin-top: 3%;">
+                            <li><a class="dropdown-item" href="#">ABOUT ME</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#">ARCHIVING</a></li>
+                            <li><a class="dropdown-item" href="#">PROJECT & SKILLS</a></li>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- nav bar right-->
+                <div class ="navbar_right" >
+                    <span class="material-symbols-outlined" style="margin: 1px 7px;">home</span>
+                    <span class="material-symbols-outlined" style="margin: 1px 7px;">add_box</span>
+                    <span class="material-symbols-outlined" style="margin: 1px 7px;">mail</span>
+                    <div class="navbar_profile_box" style="margin: 1px 7px;"><img class="navbar_profile" src="{% get_media_prefix %}profile2.png"></div>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- nav bar end -->
+
+    <!-- main_screen -->
+    <div class="main_screen">
+        <!-- left screen -->
+        <div class="main_screen_left">
+            <div class="main_screen_left_content">
+                <div class="box">
+    
+                    <img class="profile" src="{% get_media_prefix %}profile2.png">
+    
+                </div>
+                <div class="profile_name_font">
+                    - 백종성 -
+                </div>
+                <div class="profile_content_font">
+                    <br>
+                    안녕하세요. 
+                    <br>
+                    개발이 너무 재미있는 개발자입니다.
+                    <br>
+                    저의 장점은 놀라운 집중력과 집요한 끈기를 통해 
+                    <br>
+                    어려운 문제도 풀어 내는 것입니다.
+                </div>
+                <div class="profile_content_under_font">
+                    @ 2023 ProfileWeb From Jongseoung
+                    <br>
+                    @ Got any questions? - Contact Me
+                </div>
+            </div>
+        </div>
+        <!-- right screen -->
+        <div class="main_screen_right">
+
+            <!-- ABOUT ME feed box -->
+            <div style="border: solid; border-color: gainsboro; border-radius: 10px; margin-top: 30px;">
+                <div style="text-align: left; margin: 5px 20px; font-size: 20px; font-weight: bolder;">
+                    ABOUT ME
+                </div>
+                <div style="border: 3px solid; border-color: gainsboro; margin: 0px 5px; border-radius: 10px; height: 70%;">
+                    <div style="display: flex; flex-direction: column; justify-content: center; text-align: left; margin-left: 10px;">
+                        <div class="aboutme_head_font">
+                            📚 늘 배우는 자세
+                        </div>
+                        <br>
+                        <div>
+                            <ul>
+                                <li>꾸준한 스터디</li>
+                                <li>동아리 활동</li>
+                            </ul>
+                        </div>
+                        <div class="aboutme_head_font">
+                            📑 기록하는 자세
+                        </div>
+                        <br>
+                        <div>
+                            <ul>
+                                <li>공부한 내용을 블로그와 깃허브에 정리</li>
+                            </ul>
+                        </div>
+                        <div class="aboutme_head_font">
+                            👨‍💻 다양한 프로젝트 경험
+                        </div>
+                        <br>
+                        <div>
+                            <ul>
+                                <li>랩실 활동</li>
+                                <li>토이 프로젝트</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="aboutme_head_font">
+                            👌 부드러운 커뮤니케이션 자세
+                        </div>
+                        <br>
+                        <div>
+                            <ul>
+                                <li>커뮤니케이션에 관한 내용</li>
+                            </ul>
+                        </div>
+                        <div class="aboutme_head_font">
+                            🎯 확실한 목표
+                        </div>
+                        <br>
+                        <div>
+                            <ul>
+                                <li>확실한 목표에 대한 내용</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div style="display: flex; flex-direction: row; justify-content: right;">
+                    자세히보기<span class="material-symbols-outlined">
+                        trending_flat
+                        </span>
+                </div>  
+            </div>
+
+            <!-- ARCHIVING feed box -->
+            <div style="border: solid; border-color: gainsboro; border-radius: 10px; margin-top: 100px;">
+                <div style="text-align: left; margin: 5px 20px; font-size: 20px; font-weight: bolder;">
+                    ARCHIVING
+                </div>
+                <div style="border: 3px solid; border-color: gainsboro; margin: 0px 5px; border-radius: 10px; height: 70%;">
+                    <div style="display: flex; flex-direction: column; justify-content: center; text-align: left; margin-left: 10px;">
+                        <div class="aboutme_head_font">
+                            📚 개발 블로그
+                        </div>
+                        <br>
+                        <div>
+                            <ul>
+                                <li>꾸준한 스터디</li>
+                                <li>동아리 활동</li>
+                            </ul>
+                        </div>
+                        <div class="aboutme_head_font">
+                            📑 깃 허브
+                        </div>
+                        <br>
+                        <div>
+                            <ul>
+                                <li>공부한 내용을 블로그와 깃허브에 정리</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div style="display: flex; flex-direction: row; justify-content: right;">
+                    자세히보기<span class="material-symbols-outlined">
+                        trending_flat
+                        </span>
+                </div>  
+            </div>
+
+        </div>
+
+        <!-- main screen left sidebar-->
+        <div class="main_screen_left_sidebar">
+            <div style="display: flex; flex-direction: column; height: 100%; justify-content: space-between;">
+                <div>
+                    b
+                    g
+                </div>
+                <div>
+                    sp
+                </div>
+                <div>
+                    up
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+</body>
+</html>
