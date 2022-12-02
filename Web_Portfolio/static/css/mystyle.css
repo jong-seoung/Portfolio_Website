@@ -105,4 +105,48 @@
     #main_screen_right {
         display: none;
     }
-    } 
+    }
+
+
+    .que{
+        position: relative;
+        padding: 10px 0;
+        cursor: pointer;
+        font-size: 14px;
+        font-weight: bolder;
+        margin-left: 10px;
+    }
+        
+    .que.on>span{
+        font-weight: bold;
+        color: #006633; 
+    }
+        
+    .anw {
+        display: none;
+        overflow: hidden;
+        font-size: 14px;
+        background-color: #FAFAFA;
+        padding: 10px 0;
+        margin-left: 10px;
+    }
+    
+    .arrow-wrap {
+        position: absolute;
+        top:50%; right: 10px;
+        transform: translate(0, -50%);
+    }
+    
+    .que .arrow-top {
+        display: none;
+    }
+    .que .arrow-bottom {
+        display: block;
+    }
+    .que.on .arrow-bottom {
+        display: none;
+    }
+    .que.on .arrow-top {
+        display: block; 
+    }
+

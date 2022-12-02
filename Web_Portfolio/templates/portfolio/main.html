@@ -43,14 +43,15 @@
                             <li><a class="dropdown-item" href="#">ABOUT ME</a></li>
                             <li><hr class="dropdown-divider"></li>
                             <li><a class="dropdown-item" href="#">ARCHIVING</a></li>
-                            <li><a class="dropdown-item" href="#">PROJECT & SKILLS</a></li>
+                            <li><a class="dropdown-item" href="#">SKILLS</a></li>
+                            <li><a class="dropdown-item" href="#">PROJECT</a></li>
                         </div>
                     </div>
                 </div>
 
                 <!-- nav bar right-->
                 <div class ="navbar_right" >
-                    <span class="material-symbols-outlined" style="margin: 1px 7px;">home</span>
+                    <a href="/" style="color: black;"><span class="material-symbols-outlined" style="margin: 1px 7px;">home</span></a>
                     <span class="material-symbols-outlined" style="margin: 1px 7px;">add_box</span>
                     <span class="material-symbols-outlined" style="margin: 1px 7px;">mail</span>
                     <div class="navbar_profile_box" style="margin: 1px 7px;"><img class="navbar_profile" src="{% get_media_prefix %}profile2.png"></div>
@@ -107,7 +108,7 @@
                         <div>
                             <ul>
                                 <li>꾸준한 스터디</li>
-                                <li>동아리 활동</li>
+                                <li>동아리 활동 - 백준 문제 풀이</li>
                             </ul>
                         </div>
                         <div class="aboutme_head_font">
@@ -150,11 +151,7 @@
                         </div>
                     </div>
                 </div>
-                <div style="display: flex; flex-direction: row; justify-content: right;">
-                    자세히보기<span class="material-symbols-outlined">
-                        trending_flat
-                        </span>
-                </div>  
+                <div style="margin-top: 30px;"></div>
             </div>
 
             <!-- ARCHIVING feed box -->
@@ -164,33 +161,188 @@
                 </div>
                 <div style="border: 3px solid; border-color: gainsboro; margin: 0px 5px; border-radius: 10px; height: 70%;">
                     <div style="display: flex; flex-direction: column; justify-content: center; text-align: left; margin-left: 10px;">
-                        <div class="aboutme_head_font">
-                            📚 개발 블로그
+                        <div style="margin-top: 10px;">
+                            <a href="https://github.com/jong-seoung" target="_blank" rel="noopener noreferrer">
+                            <img src="{% get_static_prefix %}img/git-hub.png" style="width: 25%; height: 5%; margin: 15px 5px;">
+                            </a>
                         </div>
-                        <br>
                         <div>
+                            공부한 <b>소스 코드 기록</b>하였습니다.
                             <ul>
-                                <li>꾸준한 스터디</li>
-                                <li>동아리 활동</li>
+                                <br>
+                                <li>과거 프로젝트, 프로그램 소스 코드</li>
+                                <li>혼자 유튜브, 인프런 강의를 보고 공부한 소스 코드</li>
                             </ul>
                         </div>
-                        <div class="aboutme_head_font">
-                            📑 깃 허브
-                        </div>
-                        <br>
                         <div>
+                            <a href="https://jongseoung.tistory.com/" target="_blank" rel="noopener noreferrer">
+                            <img src="{% get_static_prefix %}img/tstory.png" style="width: 25%; height: 5%; margin: 15px 5px;">
+                            </a>
+                        </div>
+                        <div>
+                            공부하면서 <b>어려웠던 부분이나 중요한 내용을 기록</b>하였습니다.
                             <ul>
-                                <li>공부한 내용을 블로그와 깃허브에 정리</li>
+                                <br>
+                                <li>공부한 내용을 다시 한번 복습하면서 기록</li>
+                                <li>개발을 하면서 배운점이나 어려운점 기록</li>
+                                <li>훗날 나에게 도움을 주기 위한 기록</li>
                             </ul>
                         </div>
+                        <br>
                     </div>
                 </div>
-                <div style="display: flex; flex-direction: row; justify-content: right;">
-                    자세히보기<span class="material-symbols-outlined">
-                        trending_flat
-                        </span>
-                </div>  
+                <div style="margin-top: 30px;"></div>
             </div>
+
+            <!-- SKILLS feed box -->
+            <div style="border: solid; border-color: gainsboro; border-radius: 10px; margin-top: 130px;">
+                <div style="text-align: left; margin: 5px 20px; font-size: 20px; font-weight: bolder;">
+                    SKILLS
+                </div>
+                <div style="border: 3px solid; border-color: gainsboro; margin: 0px 5px; border-radius: 10px; height: 70%;">
+                    <div style="display: flex; flex-direction: column; justify-content: center; text-align: left; margin-left: 10px;">
+                        <div class="aboutme_head_font">
+                            📕 Backend
+                        </div>
+                        <div id="Accordion_wrap">
+                            <div style="display: flex; flex-direction: row; justify-content: left;">
+                                <div class="que">
+                                    <span>Python</span>
+                                </div>
+                                <div class="anw">
+                                    <span>
+                                        <ul>
+                                            <li>파이썬의 기초를 공부하고 자료구조와 알고리즘을 파이썬 기반으로 학습했습니다.</li>
+                                        </ul>
+                                    </span>
+                                </div>
+                            </div>
+                            
+                            <div style="display: flex; flex-direction: row; justify-content: left;">
+                                <div class="que">
+                                    <span>Django</span>
+                                </div>
+                                <div class="anw">
+                                    <span>
+                                        <ul>
+                                            <li>Django로 Rest framwork를 활용하여 인스타그램 클론 개발을 해봤습니다.</li>
+                                        </ul>
+                                    </span>
+                                </div>
+                            </div>
+                            
+                            <div style="display: flex; flex-direction: row; justify-content: left;">
+                                <div class="que">
+                                    <span>MySQL</span>
+                                </div>
+                                <div class="anw">
+                                    <span>MySQL 관련 내용</span>
+                                </div>
+                            </div>
+
+                            <div style="display: flex; flex-direction: row; justify-content: left;">
+                                <div class="que">
+                                    <span>AWS</span>
+                                </div>
+                                <div class="anw">
+                                    <span>AWS 관련 내용</span>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="aboutme_head_font">
+                            📗 Frontend
+                        </div>
+                        <div id="Accordion_wrap">
+                            <div style="display: flex; flex-direction: row; justify-content: left;">
+                                <div class="que">
+                                    <span>HTML5</span>
+                                </div>
+                                <div class="anw">
+                                    <span>HTML5 관련 내용</span>
+                                </div>
+                            </div>
+                            
+                            <div style="display: flex; flex-direction: row; justify-content: left;">
+                                <div class="que">
+                                    <span>CSS3</span>
+                                </div>
+                                <div class="anw">
+                                    <span>
+                                        <ul>
+                                            <li>부트스트랩을 활용해서 만든 후 세부적인 설정은 CSS로 조절할 수 있습니다.</li>
+                                        </ul>
+                                    </span>
+                                </div>
+                            </div>
+                            
+                            <div style="display: flex; flex-direction: row; justify-content: left;">
+                                <div class="que">
+                                    <span>Janvascript</span>
+                                </div>
+                                <div class="anw">
+                                    <span>Janvascript 관련 내용</span>
+                                </div>
+                            </div>
+
+                            <div style="display: flex; flex-direction: row; justify-content: left;">
+                                <div class="que">
+                                    <span>Ajax</span>
+                                </div>
+                                <div class="anw">
+                                    <span>Ajax 관련 내용</span>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="aboutme_head_font">
+                            📘 Tools
+                        </div>
+                        <div id="Accordion_wrap">
+                            <div style="display: flex; flex-direction: row; justify-content: left;">
+                                <div class="que">
+                                    <span>Git-Hub</span>
+                                </div>
+                                <div class="anw">
+                                    <span>
+                                        <ul>
+                                            <li>GitHub를 활용해서 프로젝트를 관리하고 커밋을 하고있습니다.</li>
+                                            <li>GitHub를 사용해서 풀었던 알고리즘 문제를 커밋 하고있습니다.</li>
+                                        </ul>
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div style="display: flex; flex-direction: row; justify-content: left;">
+                                <div class="que">
+                                    <span>VScode</span>
+                                </div>
+                                <div class="anw">
+                                    <span>
+                                        <ul>
+                                            <li>모든 프로젝트를 VScode를 이용하여 작성하고 실행하고있습니다.</li>
+                                        </ul>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                    </div>
+                </div>
+                <div style="margin-top: 30px;"></div> 
+            </div>
+
+            <!-- PROJECT feed box -->
+            <div style="border: solid; border-color: gainsboro; border-radius: 10px; margin-top: 30px;">
+                <div style="text-align: left; margin: 5px 20px; font-size: 20px; font-weight: bolder;">
+                    PROJECT - 프로젝트 이름 
+                </div>
+                <div style="border: 3px solid; border-color: gainsboro; margin: 0px 5px; border-radius: 10px; height: 70%;">
+                    사진 넣는 부분
+                </div>
+                
+            </div>
+
 
         </div>
 
@@ -211,6 +363,12 @@
         </div>
     </div>
     
-
+<script>
+        $(".que").click(function() {
+        $(this).next(".anw").stop().slideToggle(300);
+        $(this).toggleClass('on').siblings().removeClass('on');
+        $(this).next(".anw").siblings(".anw").slideUp(300); // 1개씩 펼치기
+});
+</script>
 </body>
 </html>
