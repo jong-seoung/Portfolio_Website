@@ -15,7 +15,7 @@
     <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
 
     <!-- CSS -->
-    <link rel="stylesheet" href ="static/css/mystyle.css" type="text/css">
+    <link rel="stylesheet" href ="/static/css/mystyle.css" type="text/css">
 </head>
 
 <body style="background: #FAFAFA;">
@@ -53,7 +53,7 @@
                 <div class ="navbar_right" >
                     <a href="/" style="color: black;"><span class="material-symbols-outlined" style="margin: 1px 7px;">home</span></a>
                     <span class="material-symbols-outlined" style="margin: 1px 7px;">add_box</span>
-                    <span class="material-symbols-outlined" style="margin: 1px 7px;">mail</span>
+                    <a href="/contact" style="color: black;"><span class="material-symbols-outlined" style="margin: 1px 7px;">mail</span></a>
                     <div class="navbar_profile_box" style="margin: 1px 7px;"><img class="navbar_profile" src="{% get_media_prefix %}profile2.png"></div>
                 </div>
             </div>
@@ -233,10 +233,10 @@
                             
                             <div style="display: flex; flex-direction: row; justify-content: left;">
                                 <div class="que">
-                                    <span>MySQL</span>
+                                    <span>SQLite</span>
                                 </div>
                                 <div class="anw">
-                                    <span>MySQL 관련 내용</span>
+                                    <span>SQLite을 사용하여 간단한 인스타그램 클론 코딩을 해보았습니다.</span>
                                 </div>
                             </div>
 
@@ -259,7 +259,7 @@
                                     <span>HTML5</span>
                                 </div>
                                 <div class="anw">
-                                    <span>HTML5 관련 내용</span>
+                                    <span>HTML5의 구조와 작동 동작 원리를 이해하고있습니다.</span>
                                 </div>
                             </div>
                             
@@ -275,22 +275,13 @@
                                     </span>
                                 </div>
                             </div>
-                            
-                            <div style="display: flex; flex-direction: row; justify-content: left;">
-                                <div class="que">
-                                    <span>Janvascript</span>
-                                </div>
-                                <div class="anw">
-                                    <span>Janvascript 관련 내용</span>
-                                </div>
-                            </div>
 
                             <div style="display: flex; flex-direction: row; justify-content: left;">
                                 <div class="que">
                                     <span>Ajax</span>
                                 </div>
                                 <div class="anw">
-                                    <span>Ajax 관련 내용</span>
+                                    <span>Ajax의 기본적인 문법형식과 사용법을 인지하고 있습니다.</span>
                                 </div>
                             </div>
                         </div>
@@ -325,6 +316,19 @@
                                     </span>
                                 </div>
                             </div>
+
+                            <div style="display: flex; flex-direction: row; justify-content: left;">
+                                <div class="que">
+                                    <span>Bootstrap</span>
+                                </div>
+                                <div class="anw">
+                                    <span>
+                                        <ul>
+                                            <li>모든 프로젝트를 VScode를 이용하여 작성하고 실행하고있습니다.</li>
+                                        </ul>
+                                    </span>
+                                </div>
+                            </div>
                         </div>
                         <br>
                     </div>
@@ -350,14 +354,16 @@
         <div class="main_screen_left_sidebar">
             <div style="display: flex; flex-direction: column; height: 100%; justify-content: space-between;">
                 <div>
-                    b
-                    g
+                    <a href="https://github.com/jong-seoung" target="_blank" rel="noopener noreferrer"><img src="{% get_static_prefix %}img/git-hub-logo.png" style="width: 25px; height: 25px; object-fit: cover;"></a>
+                    <a href="https://jongseoung.tistory.com/" target="_blank" rel="noopener noreferrer"><img src="{% get_static_prefix %}img/tistorylogo.png" style="width: 25px; height: 25px; object-fit: cover; margin-top: 5px;"></a>
                 </div>
                 <div>
-                    sp
+                    
                 </div>
                 <div>
-                    up
+                    <span id="scrollup_button" class="material-symbols-outlined" style="cursor: pointer;">
+                        expand_less
+                    </span>
                 </div>
             </div>
         </div>
@@ -367,8 +373,13 @@
         $(".que").click(function() {
         $(this).next(".anw").stop().slideToggle(300);
         $(this).toggleClass('on').siblings().removeClass('on');
-        $(this).next(".anw").siblings(".anw").slideUp(300); // 1개씩 펼치기
-});
+        $(this).next(".anw").siblings(".anw").find("li").slideUp(300); // 1개씩 펼치기
+        });
+
+        //
+        $('#scrollup_button').click(function(){
+        $('html, body').animate({scrollTop:0}, '300');
+        });
 </script>
 </body>
 </html>

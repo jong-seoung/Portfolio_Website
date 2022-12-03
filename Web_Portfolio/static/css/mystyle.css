@@ -75,6 +75,13 @@
         margin-top: 1%;
         background-color: #FAFAFA;
     }
+    .main_screen_contact_right{
+        width: 700px;
+        height: 3000px; 
+        margin-left: 300px;
+        margin-top: 1%;
+        background-color: #FAFAFA;
+    }
     .main_screen_left_sidebar{
         width: 20px;
         height: 87%; 
