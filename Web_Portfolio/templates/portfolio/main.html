@@ -37,14 +37,14 @@
                 <div class="dropdown_AboutMe">
                     <div class="dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            PROFILE
+                            MENU
                         </a>
                         <div class="dropdown-menu" style="text-align: center; width: 100%; margin-top: 3%;">
-                            <li><a class="dropdown-item" href="#">ABOUT ME</a></li>
+                            <li><a id="main_dropdown_menu_aboutme" class="dropdown-item" href="#">ABOUT ME</a></li>
                             <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="#">ARCHIVING</a></li>
-                            <li><a class="dropdown-item" href="#">SKILLS</a></li>
-                            <li><a class="dropdown-item" href="#">PROJECT</a></li>
+                            <li><a id="main_dropdown_menu_archiving" class="dropdown-item" href="#">ARCHIVING</a></li>
+                            <li><a id="main_dropdown_menu_skills" class="dropdown-item" href="#">SKILLS</a></li>
+                            <li><a id="main_dropdown_menu_project" class="dropdown-item">PROJECT</a></li>
                         </div>
                     </div>
                 </div>
@@ -52,9 +52,21 @@
                 <!-- nav bar right-->
                 <div class ="navbar_right" >
                     <a href="/" style="color: black;"><span class="material-symbols-outlined" style="margin: 1px 7px;">home</span></a>
-                    <span class="material-symbols-outlined" style="margin: 1px 7px;">add_box</span>
-                    <a href="/contact" style="color: black;"><span class="material-symbols-outlined" style="margin: 1px 7px;">mail</span></a>
-                    <div class="navbar_profile_box" style="margin: 1px 7px;"><img class="navbar_profile" src="{% get_media_prefix %}profile2.png"></div>
+                    <span id="nav_bar_add_box" class="material-symbols-outlined" style="margin: 1px 7px; cursor: pointer;">add_box</span>
+                    <a href="/content/contact" style="color: black;"><span class="material-symbols-outlined" style="margin: 1px 7px;">mail</span></a>
+                    <div class="dropdown">
+                        <a id ="dropdownMenu" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <div class="navbar_profile_box" style="margin: 1px 7px;">
+                            <img class="navbar_profile" src="{% get_media_prefix %}profile2.png">
+                        </div>
+                        <ul class="dropdown-menu" style="left: -130px; border-radius: 0%; top: 40px; z-index: 1;;" aria-labelledby="dropdownMenu">
+                            <li><a class="dropdown-item" id="profile_upload" >프로필 변경</a></li>
+                            <input type="file" id="input_File_upload" style="display:none;" onchange="profile_upload();"/>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="/user/login">로그아웃</a></li>
+                        </ul>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -62,7 +74,7 @@
     <!-- nav bar end -->
 
     <!-- main_screen -->
-    <div class="main_screen">
+    <div class="main_screen" style=" overflow: hidden;">
         <!-- left screen -->
         <div class="main_screen_left">
             <div class="main_screen_left_content">
@@ -87,15 +99,14 @@
                 <div class="profile_content_under_font">
                     @ 2023 ProfileWeb From Jongseoung
                     <br>
-                    @ Got any questions? - <a href="contact/" style="text-decoration: none;">Contact Me</a>
+                    @ Got any questions? - <a href="/content/contact" style="text-decoration: none;">Contact Me</a>
                 </div>
             </div>
         </div>
         <!-- right screen -->
-        <div class="main_screen_right" id="content">
-
+        <div class="main_screen_right" class="content">
             <!-- ABOUT ME feed box -->
-            <div class="content">
+            <div>
                 <div style="border: solid; border-color: gainsboro; border-radius: 10px; margin-top: 30px;">
                     <div style="text-align: left; margin: 5px 20px; font-size: 20px; font-weight: bolder;">
                         ABOUT ME
@@ -158,7 +169,7 @@
 
 
             <!-- ARCHIVING feed box -->
-            <div class="content">
+            <div>
                 <div style="border: solid; border-color: gainsboro; border-radius: 10px; margin-top: 170px;">
                     <div style="text-align: left; margin: 5px 20px; font-size: 20px; font-weight: bolder;">
                         ARCHIVING
@@ -200,7 +211,7 @@
             </div>
 
             <!-- SKILLS feed box -->
-            <div class="content">
+            <div>
                 <div style="border: solid; border-color: gainsboro; border-radius: 10px; margin-top: 200px;">
                     <div style="text-align: left; margin: 5px 20px; font-size: 20px; font-weight: bolder;">
                         SKILLS
@@ -372,12 +383,12 @@
             </div>
 
             <!-- PROJECT feed box -->
-            <div class="content">
-                <div style="border: solid; border-color: gainsboro; border-radius: 10px; margin-top: 130px;">
+            <div>
+                <div style="border: solid; border-color: gainsboro; border-radius: 10px; margin-top: 130px; height: 623px;">
                     <div style="text-align: left; margin: 5px 20px; font-size: 20px; font-weight: bolder;">
                         PROJECT - 프로젝트 이름 
                     </div>
-                    <div style="border: 3px solid; border-color: gainsboro; margin: 0px 5px; border-radius: 10px; height: 70%;">
+                    <div style="border: 3px solid; border-color: gainsboro; margin: 0px 5px; border-radius: 10px; height: 65%;">
                         사진 넣는 부분
                     </div>
                     <div style="display: flex; flex-direction: row; justify-content: space-between; margin: 5px 10px;">
@@ -398,20 +409,89 @@
             </div>
         </div>
     
-        <!-- main_screen_left_sidebar-->
-        <div class="main_screen_left_sidebar">
-            <div style="display: flex; flex-direction: column; height: 100%; justify-content: space-between;">
+        <!-- main_screen_right_sidebar-->
+        <div class="main_screen_right_sidebar">
+            <div style="display: flex; flex-direction: column; height: 87%; justify-content: space-between;">
                 <div>
                     <a href="https://github.com/jong-seoung" target="_blank" rel="noopener noreferrer"><img src="{% get_static_prefix %}img/git-hub-logo.png" style="width: 25px; height: 25px; object-fit: cover;"></a>
                     <a href="https://jongseoung.tistory.com/" target="_blank" rel="noopener noreferrer"><img src="{% get_static_prefix %}img/tistorylogo.png" style="width: 25px; height: 25px; object-fit: cover; margin-top: 5px;"></a>
                 </div>
                 <div>
-                    
                 </div>
                 <div>
                     <span id="scrollup_button" class="material-symbols-outlined" style="cursor: pointer;">
                         expand_less
                     </span>
+                </div>
+            </div>
+        </div>
+
+    <!-- 첫번째 모달 만들기 -->
+    <div id = "first_modal" class="modal_overlay">
+        <div class="modal_window">
+            <div style="display: flex; flex-direction: row; justify-content: space-between;">
+                <div style="width: 40px;">
+            
+                </div>
+                <div>
+                    새 프로젝트 업로드
+                </div>
+                <div style="width: 40px;">
+                    <a href="/" style="text-decoration: none; color: black;"><span class="material-symbols-outlined">close</span></a>
+                </div>
+            </div>
+            <div class="modal_image_upload">
+            </div>
+        </div>
+    </div>
+    <!-- 두번째 모달 만들기 -->
+    <div id = "second_modal" class="modal_overlay">
+        <div class="modal_window">
+            <div style="display: flex; flex-direction: row; justify-content: space-between;">
+                <div style="width: 40px;">
+
+                </div>
+                <div>
+                    새 프로젝트 업로드
+                </div>
+                <div style="width: 40px;">
+                    <a href="/" style="text-decoration: none; color: black;"><span class="material-symbols-outlined">close</span></a>
+                </div>
+            </div>
+
+            <div style="display: flex; flex-direction: row; ">
+                <div style="display: flex; flex-direction: column; text-align: left;">
+                    <div class="modal_image_upload" style="width: 460px; height: 485px; outline: 2px dashed gray; border-radius: 3%;">
+                    </div>
+                    <div style=" margin-left: 7px;">
+                        깃허브 <input id="mainmodal_github" type="text" name="name" size="47%" value=" Git-Hub" style="color: gainsboro; padding: 2px 2px;">
+                    </div>
+                    <div style=" margin-left: 7px; margin-top: 3px;">
+                        블로그 <input id="mainmodal_blog" type="text" name="name" size="47%" value=" T_STORY" style="color: gainsboro; padding: 2px 2px;">
+                    </div>
+                </div>
+                <div>
+                    <div style="display: flex; flex-direction: row; align-items: center; justify-content: space-between;">
+                        <div style="display: flex; flex-direction: row; align-items: center;">
+                            <div>
+                                프로필
+                            </div>
+                            <div>
+                                닉네임
+                            </div>
+                        </div>
+                    </div>
+                    <div style="display: flex; flex-direction: column; justify-content: center;">
+                    PROJECT NAME
+                    <input id="mainmodal_projectname" type="text" name="name" size="38%" value=" PROJECT NAME" style="color: gainsboro; padding: 2px 2px;">
+                    CONTENT
+                    <textarea id="input_feed_content"class="form-control" style="width: 320px; height: 300px; text-align: left;"></textarea>
+                    HASH TAG
+                    <input id="mainmodal_HASH_TAG" type="text" name="name" size="38%" value=" #Django #Python #HTML" style="color: gainsboro; padding: 2px 2px;">
+                    <button type="button" id= "feed_create_button"class="btn btn-primary" style="width: 315px; margin: 5px;">
+                        공유하기
+                    </button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -433,7 +513,36 @@
             page = 1;
             
         });
+        
+        // 메인화면 메뉴 클릭시 이동
+        $('#main_dropdown_menu_project').click(function(){
+            page = 4;
+            
+            var posTop = (page-1) * $(window).height();
+            $html.animate({scrollTop : posTop});
+        });
 
+        $('#main_dropdown_menu_skills').click(function(){
+            page = 3;
+            
+            var posTop = (page-1) * $(window).height();
+            $html.animate({scrollTop : posTop});
+        });
+
+        $('#main_dropdown_menu_archiving').click(function(){
+            page = 2;
+            
+            var posTop = (page-1) * $(window).height();
+            $html.animate({scrollTop : posTop});
+        });
+
+        $('#main_dropdown_menu_aboutme').click(function(){
+            page = 1;
+            
+            var posTop = (page-1) * $(window).height();
+            $html.animate({scrollTop : posTop});
+        });
+        
         //기본 이벤트 제거
         window.addEventListener("wheel", function(e){
             e.preventDefault();
@@ -462,6 +571,103 @@
         $html.animate({scrollTop : posTop});
         });
 
+        // 프로필 변경
+        $('#profile_upload').click(function(){
+            $('#input_File_upload').click();
+        });
+
+        // 프로젝트 이미지 업로드 창
+        $('#nav_bar_add_box').click(function(){
+        $('#first_modal').css({
+        display : 'flex',
+        });
+        $('html, body').animate({scrollTop:0}, '300');
+        $(document.body).css({
+        overflow : 'hidden'
+        });
+    });
+
+    $('.modal_image_upload')
+        .on("dragover", dragOver)
+        .on("dragleave", dragOver)
+        .on("drop", uploadFiles);
+
+    function dragOver(e){
+        e.stopPropagation();
+        e.preventDefault();
+
+        if (e.type == "dragover") {
+        $(e.target).css({
+        "background-color": "black",
+        "outline-offset": "-20px"
+        });
+        } 
+        else {
+        $(e.target).css({
+        "background-color": "gray",
+        "outline-offset": "-10px"
+        });
+        }
+    }
+    
+    function uploadFiles(e){
+        e.stopPropagation();
+        e.preventDefault();
+
+        e.dataTransfer = e.originalEvent.dataTransfer; //2
+        files = e.target.files || e.dataTransfer.files;
+    
+        if (files.length > 1) {
+        alert('하나만 올려라.');
+        return;
+        }
+
+        if (files[0].type.match(/image.*/)) {
+        $(".modal_image_upload").css({
+        "background-image": "url(" + window.URL.createObjectURL(files[0]) + ")",
+        "background-size": "95%",
+        "background-repeat": "no-repeat",
+        "background-position": "center"
+        });
+
+        $('#first_modal').css({
+        display : 'none',
+        });
+        $('#second_modal').css({
+        display : 'flex',
+        });
+        }
+        else{
+        alert('이미지가 아닙니다.');
+        return;
+        }
+
+    }
+
+    // 클릭시 기존 입력값 제거
+    // 프로젝트 이름
+    $("#mainmodal_projectname").click(function(){
+            $("#mainmodal_projectname").val("");
+            $("#mainmodal_projectname").css('color','black');
+        });
+
+    // 해시태그
+    $("#mainmodal_HASH_TAG").click(function(){
+            $("#mainmodal_HASH_TAG").val("");
+            $("#mainmodal_HASH_TAG").css('color','black');
+        });
+    
+    // 깃허브
+    $("#mainmodal_github").click(function(){
+            $("#mainmodal_github").val("");
+            $("#mainmodal_github").css('color','black');
+        });
+
+    // 블로그
+    $("#mainmodal_blog").click(function(){
+            $("#mainmodal_blog").val("");
+            $("#mainmodal_blog").css('color','black');
+        });
 </script>
 </body>
 </html>
