@@ -63,7 +63,7 @@
                             <li><a class="dropdown-item" id="profile_upload" >프로필 변경</a></li>
                             <input type="file" id="input_File_upload" style="display:none;" onchange="profile_upload();"/>
                             <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="/user/login">로그아웃</a></li>
+                            <li><a class="dropdown-item" href="/user/logout">로그아웃</a></li>
                         </ul>
                         </a>
                     </div>
@@ -80,7 +80,7 @@
             <div class="main_screen_left_content">
                 <div class="box">
     
-                    <img class="profile" src="{% get_media_prefix %}profile2.png">
+                    <img class="profile" src="{% get_media_prefix %}{{myemail.profile_img}}">
     
                 </div>
                 <div class="profile_name_font">
@@ -167,7 +167,6 @@
                 </div>
             </div>
 
-
             <!-- ARCHIVING feed box -->
             <div>
                 <div style="border: solid; border-color: gainsboro; border-radius: 10px; margin-top: 170px;">
@@ -212,11 +211,11 @@
 
             <!-- SKILLS feed box -->
             <div>
-                <div style="border: solid; border-color: gainsboro; border-radius: 10px; margin-top: 200px;">
+                <div style="border: solid; border-color: gainsboro; border-radius: 10px; margin-top: 200px; height: 648px;">
                     <div style="text-align: left; margin: 5px 20px; font-size: 20px; font-weight: bolder;">
                         SKILLS
                     </div>
-                    <div style="border: 3px solid; border-color: gainsboro; margin: 0px 5px; border-radius: 10px; height: 70%;">
+                    <div style="border: 3px solid; border-color: gainsboro; margin: 0px 5px; border-radius: 10px; height: 90%;">
                         <div style="display: flex; flex-direction: column; justify-content: center; text-align: left; margin-left: 10px;">
                             <div class="aboutme_head_font">
                                 📕 Backend
@@ -317,11 +316,14 @@
 
                                 <div style="display: flex; flex-direction: row; justify-content: left;">
                                     <div class="que">
-                                        <span>Ajax</span>
+                                        <span>자바스크립트</span>
                                     </div>
                                     <div class="anw">
                                         <span>
                                             <ul>
+                                                <li>
+                                                    자바 스트립트를 사용하여 회원가입, 로그인, 클릭모션, 스크롤 모션등을 만들어보았습니다.
+                                                </li>
                                                 <li>
                                                     Ajax의 기본적인 문법형식과 사용법을 인지하고 있습니다.
                                                 </li>
@@ -511,7 +513,6 @@
         $('#scrollup_button').click(function(){
             $html.animate({scrollTop : 0});
             page = 1;
-            
         });
         
         // 메인화면 메뉴 클릭시 이동

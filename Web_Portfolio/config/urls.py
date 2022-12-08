@@ -1,4 +1,4 @@
-from .views import Main
+from polls.content.views import Main
 from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
