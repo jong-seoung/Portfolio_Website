@@ -48,8 +48,21 @@
                 <!-- nav bar right-->
                 <div class ="navbar_right">
                     <a href="/" style="color: black;"><span class="material-symbols-outlined" style="margin: 1px 7px;">home</span></a>
-                    <span class="material-symbols-outlined" style="margin: 1px 7px;">mail</span>
-                    <div class="navbar_profile_box" style="margin: 1px 7px;"><img class="navbar_profile" src="{% get_media_prefix %}profile2.png"></div>
+                    <a href="/content/contact" style="color: black;"><span class="material-symbols-outlined" style="margin: 1px 7px;">mail</span></a>
+                    <div class="dropdown">
+                        <a id ="dropdownMenu" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <div class="navbar_profile_box" style="margin: 1px 7px;">
+                            <img class="navbar_profile" src="{% get_media_prefix %}{{user.profile_img}}">
+                        </div>
+                        <ul class="dropdown-menu" style="left: -130px; border-radius: 0%; top: 40px; z-index: 1;;" aria-labelledby="dropdownMenu">
+                            <li><a class="dropdown-item">{{user.nickname}}</a></li>
+                            <li><a class="dropdown-item" id="profile_upload" >프로필 변경</a></li>
+                            <input type="file" id="input_File_upload" style="display:none;" onchange="profile_upload();"/>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="/user/logout">로그아웃</a></li>
+                        </ul>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -63,7 +76,7 @@
             <div class="main_screen_left_content">
                 <div class="box">
     
-                    <img class="profile" src="{% get_media_prefix %}profile2.png">
+                    <img class="profile" src="{% get_media_prefix %}{{myemail.profile_img}}">
     
                 </div>
                 <div class="profile_name_font">
