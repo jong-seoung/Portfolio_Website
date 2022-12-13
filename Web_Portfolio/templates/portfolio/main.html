@@ -64,7 +64,7 @@
                             <li><a class="dropdown-item" id="profile_upload" >프로필 변경</a></li>
                             <input type="file" id="input_File_upload" style="display:none;" onchange="profile_upload();"/>
                             <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="/user/logout">로그아웃</a></li>
+                            <li><a class="dropdown-item" id="nav_logout" href="/user/logout">로그아웃</a></li>
                         </ul>
                         </a>
                     </div>
@@ -302,83 +302,33 @@
                 </div>
             </div>
 
-            <!-- PROJECT feed box1 -->
+            <!-- PROJECT feed box -->
+            {% for project in project_list %}
             <div style="margin-bottom: 130px;">
                 <div style="border: solid; border-color: gainsboro; border-radius: 10px; height: 623px;">
                     <div style="text-align: left; margin: 5px 20px; font-size: 20px; font-weight: bolder;">
-                        PROJECT - 프로젝트 이름 
+                        PROJECT - {{project.project_name}}
                     </div>
-                    <div style="border: 3px solid; border-color: gainsboro; margin: 0px 5px; border-radius: 10px; height: 65%;">
-                        사진 넣는 부분
+                    <div style="margin: 10px 10px; border-radius: 10px; height: 65%; overflow:hidden;">
+                        <img style="height: 100%; width: 100%; object-fit: cover; margin: auto;" src="{% get_media_prefix %}{{project.image}}">
                     </div>
                     <div style="display: flex; flex-direction: row; justify-content: space-between; margin: 5px 10px;">
                         <div>
                             좋아요
                         </div>
                         <div>
-                            <a href="https://github.com/jong-seoung" target="_blank" rel="noopener noreferrer"><img src="{% get_static_prefix %}img/git-hub-logo.png" style="width: 25px; height: 25px; object-fit: cover;"></a>
-                            <a href="https://jongseoung.tistory.com/" target="_blank" rel="noopener noreferrer"><img src="{% get_static_prefix %}img/tistorylogo.png" style="width: 33px; height: 33px; object-fit: cover;"></a>
+                            <a href="{{project.url_git_hub}}" target="_blank" rel="noopener noreferrer"><img src="{% get_static_prefix %}img/git-hub-logo.png" style="width: 25px; height: 25px; object-fit: cover;"></a>
+                            <a href="{{project.url_blog}}" target="_blank" rel="noopener noreferrer"><img src="{% get_static_prefix %}img/tistorylogo.png" style="width: 33px; height: 33px; object-fit: cover;"></a>
                         </div>
                     </div>
                     <div style="text-align: left; margin-left: 10px;">
-                        #Django #Python #HTML
+                        {{project.hashtag}}
                         <br>
-                        프로젝트에 대한 간단한 설명
+                        {{project.content}}
                     </div>
                 </div>
             </div>
-
-            <!-- PROJECT feed box2 -->
-            <div style="margin-bottom: 130px;">
-                <div style="border: solid; border-color: gainsboro; border-radius: 10px; height: 623px;">
-                    <div style="text-align: left; margin: 5px 20px; font-size: 20px; font-weight: bolder;">
-                        PROJECT2 - 프로젝트 이름 
-                    </div>
-                    <div style="border: 3px solid; border-color: gainsboro; margin: 0px 5px; border-radius: 10px; height: 65%;">
-                        사진 넣는 부분
-                    </div>
-                    <div style="display: flex; flex-direction: row; justify-content: space-between; margin: 5px 10px;">
-                        <div>
-                            좋아요
-                        </div>
-                        <div>
-                            <a href="https://github.com/jong-seoung" target="_blank" rel="noopener noreferrer"><img src="{% get_static_prefix %}img/git-hub-logo.png" style="width: 25px; height: 25px; object-fit: cover;"></a>
-                            <a href="https://jongseoung.tistory.com/" target="_blank" rel="noopener noreferrer"><img src="{% get_static_prefix %}img/tistorylogo.png" style="width: 33px; height: 33px; object-fit: cover;"></a>
-                        </div>
-                    </div>
-                    <div style="text-align: left; margin-left: 10px;">
-                        #Django #Python #HTML
-                        <br>
-                        프로젝트에 대한 간단한 설명
-                    </div>
-                </div>
-            </div>
-
-            <!-- PROJECT feed box3 -->
-            <div style="margin-bottom: 130px;">
-                <div style="border: solid; border-color: gainsboro; border-radius: 10px; height: 623px;">
-                    <div style="text-align: left; margin: 5px 20px; font-size: 20px; font-weight: bolder;">
-                        PROJECT3 - 프로젝트 이름 
-                    </div>
-                    <div style="border: 3px solid; border-color: gainsboro; margin: 0px 5px; border-radius: 10px; height: 65%;">
-                        사진 넣는 부분
-                    </div>
-                    <div style="display: flex; flex-direction: row; justify-content: space-between; margin: 5px 10px;">
-                        <div>
-                            좋아요
-                        </div>
-                        <div>
-                            <a href="https://github.com/jong-seoung" target="_blank" rel="noopener noreferrer"><img src="{% get_static_prefix %}img/git-hub-logo.png" style="width: 25px; height: 25px; object-fit: cover;"></a>
-                            <a href="https://jongseoung.tistory.com/" target="_blank" rel="noopener noreferrer"><img src="{% get_static_prefix %}img/tistorylogo.png" style="width: 33px; height: 33px; object-fit: cover;"></a>
-                        </div>
-                    </div>
-                    <div style="text-align: left; margin-left: 10px;">
-                        #Django #Python #HTML
-                        <br>
-                        프로젝트에 대한 간단한 설명
-                    </div>
-                </div>
-            </div>
+            {% endfor %}
         </div>
     
         <!-- main_screen_right_sidebar-->
@@ -436,10 +386,10 @@
                     <div class="modal_image_upload" style="width: 460px; height: 485px; outline: 2px dashed gray; border-radius: 3%;">
                     </div>
                     <div style=" margin-left: 7px;">
-                        깃허브 <input id="mainmodal_github" type="text" name="name" size="47%" value=" Git-Hub" style="color: gainsboro; padding: 2px 2px;">
+                        깃허브 <input id="input_project_url_github" type="text" size="47%" placeholder="깃허브 주소" onfocus="this.placeholder=''" onblur="this.placeholder='깃허브 주소'" name="text">
                     </div>
                     <div style=" margin-left: 7px; margin-top: 3px;">
-                        블로그 <input id="mainmodal_blog" type="text" name="name" size="47%" value=" T_STORY" style="color: gainsboro; padding: 2px 2px;">
+                        블로그 <input id="input_project_url_blog" type="text" size="47%" placeholder="블로그 주소" onfocus="this.placeholder=''" onblur="this.placeholder='블로그 주소'" name="text">
                     </div>
                 </div>
                 <div>
@@ -454,14 +404,20 @@
                         </div>
                     </div>
                     <div style="display: flex; flex-direction: column; justify-content: center;">
-                    PROJECT NAME
-                    <input id="mainmodal_projectname" type="text" name="name" size="38%" value=" PROJECT NAME" style="color: gainsboro; padding: 2px 2px;">
-                    CONTENT
-                    <textarea id="input_feed_content"class="form-control" style="width: 320px; height: 300px; text-align: left;"></textarea>
-                    HASH TAG
-                    <input id="mainmodal_HASH_TAG" type="text" name="name" size="38%" value=" #Django #Python #HTML" style="color: gainsboro; padding: 2px 2px;">
-                    <button type="button" id= "feed_create_button"class="btn btn-primary" style="width: 315px; margin: 5px;">
-                        공유하기
+                        <div style="margin-top: 5px;">
+                        PROJECT NAME
+                        <input id="input_project_name" type="text" size="38%" style="margin-top: 5px;" placeholder="Project Name" onfocus="this.placeholder=''" onblur="this.placeholder='Project Name'" name="text">
+                        </div>
+                        <div style="margin-top: 5px;">
+                            CONTENT
+                            <textarea id="input_project_content" type="text" style="margin-top: 5px; width: 97%; height: 100%; height: 292px; vertical-align: top; text-align: left;" placeholder="content" onfocus="this.placeholder=''" onblur="this.placeholder='content'" name="text"></textarea>
+                        </div>
+                        <div style="margin-top: 5px;">
+                            HASH TAG
+                            <input id="input_project_hashtag" type="text" size="38%" style="margin-top: 5px;" placeholder="#Python #Django #SQLite" onfocus="this.placeholder=''" onblur="this.placeholder='#Python #Django #SQLite'" name="text">
+                        </div>
+                    <button type="button" id= "project_create_button" class="btn btn-primary" style="width: 317px; height: 60px; margin: 7px;">
+                        Project Upload
                     </button>
                     </div>
                 </div>
@@ -473,6 +429,55 @@
 
     
 <script>
+        // 프로젝트 업로드 클릭 이벤트
+        $('#project_create_button').click(function(){ 
+        var email = '{{user.email}}';
+        var myemail = '{{myemail.email}}'
+        if(email==myemail){ 
+            alert("프로젝트 업로드 완료.");
+            let file = files[0];
+            let image = files[0].name;
+            let project_name =  $('#input_project_name').val();
+            let content =  $('#input_project_content').val();
+            let hashtag =  $('#input_project_hashtag').val();
+            let url_blog =  $('#input_project_url_blog').val();
+            let url_github =  $('#input_project_url_github').val();
+
+            let fd = new FormData();
+
+            fd.append('file',file);
+            fd.append('image',image);
+            fd.append('content',content);
+            fd.append('project_name',project_name);
+            fd.append('hashtag',hashtag);
+            fd.append('url_blog',url_blog);
+            fd.append('url_github',url_github);
+
+            $.ajax({
+            url: "/content/upload",
+            data: fd,
+            method: "POST",
+            processData: false,
+            contentType: false,
+
+            success: function (data){
+                console.log("성공");
+            },
+            error: function (request, status, error){
+                console.log("에러");
+            },
+            complete: function (){
+                console.log("완료");
+                location.replace("");
+            }
+            });
+        }
+        else{
+            alert("권한이 없습니다");
+        }
+    });   
+
+        // 아코디언 목록
         $(".que").click(function() {
         $(this).next(".anw").stop().slideToggle(300);
         $(this).toggleClass('on').siblings().removeClass('on');
@@ -646,30 +651,6 @@
 
     }
 
-    // 클릭시 기존 입력값 제거 - 프로젝트 업로드
-    // 프로젝트 이름
-    $("#mainmodal_projectname").click(function(){
-            $("#mainmodal_projectname").val("");
-            $("#mainmodal_projectname").css('color','black');
-        });
-
-    // 해시태그
-    $("#mainmodal_HASH_TAG").click(function(){
-            $("#mainmodal_HASH_TAG").val("");
-            $("#mainmodal_HASH_TAG").css('color','black');
-        });
-    
-    // 깃허브
-    $("#mainmodal_github").click(function(){
-            $("#mainmodal_github").val("");
-            $("#mainmodal_github").css('color','black');
-        });
-
-    // 블로그
-    $("#mainmodal_blog").click(function(){
-            $("#mainmodal_blog").val("");
-            $("#mainmodal_blog").css('color','black');
-        });
 </script>
 </body>
 </html>
