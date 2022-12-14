@@ -10,7 +10,7 @@ from rest_framework.response import Response
 class Main(APIView):
     def get(self,request):
         email = request.session.get('email',None)
-        
+
         if email is None:
             return render(request,"user/login.html")
 
@@ -22,9 +22,9 @@ class Main(APIView):
         
         project_object_list = Project.objects.all().order_by('-id') #select * from content_feed;
         project_list=[]
+        
 
         for project in project_object_list:
-            user = User.objects.filter(email=project.email).first()
             
         #     like_count = Like.objects.filter(project_id=project.id, is_like=True).count()
         #     check_liked = Like.objects.filter(project_id=project.id, email=email,check_like=True).exists()
@@ -40,7 +40,6 @@ class Main(APIView):
                 url_blog=project.url_blog,
                 url_github=project.url_github,
                 ))
-
         return render(request,"portfolio/main.html",context=dict(project_list=project_list,user=user,myemail=myemail))
 
     def post(self,request):
