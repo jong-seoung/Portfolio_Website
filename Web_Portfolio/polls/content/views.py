@@ -6,6 +6,7 @@ from config.settings import MEDIA_ROOT
 import os
 from .models import Project
 from rest_framework.response import Response
+from django.core.mail import EmailMessage
 
 class Main(APIView):
     def get(self,request):
@@ -44,6 +45,8 @@ class Main(APIView):
 
     def post(self,request):
         return render(request,"portfolio/main.html")
+    
+
 
 
 class Contact(APIView):
@@ -60,6 +63,23 @@ class Contact(APIView):
             return render(request,"user/login.html")
 
         return render(request,"content/contact.html",context=dict(user=user,myemail=myemail))
+    
+class Sendmail(APIView):
+    def get(self,request):
+        contactme_namebox = request.GET.get('contactme_namebox')
+        contactme_emailbox = request.GET.get('contactme_emailbox')
+        contactme_message_textbox = request.GET.get('contactme_message_textbox')
+        
+        email = EmailMessage(
+            contactme_namebox,   # 제목
+            contactme_message_textbox,    # 내용
+            contactme_emailbox,  # 보내는 이메일 (settings에서 설정해서 작성안해도 됨)
+            to=['jjong015189@naver.com'],  # 받는 이메일 리스트
+        )
+        email.send()
+
+        return render(request,"content/contact.html")
+
 
 
 class UploadProject(APIView):

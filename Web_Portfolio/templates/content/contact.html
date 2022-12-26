@@ -136,7 +136,7 @@
                         </div>
                         <br>
                         <div style="text-align: right; margin-right: 20px;">
-                            <button style="border-radius: 30px; padding: 8px 15px; background-color: #d1d1d1;">send message</button>
+                            <button id="contactme_sendme_button" style="border-radius: 30px; padding: 8px 15px; background-color: #d1d1d1;">send message</button>
                         </div>
                         <br>
                     </div>
@@ -173,6 +173,74 @@
             $("#contactme_emailbox").val("");
             $("#contactme_emailbox").css('color','black');
         });
+
+        // 메일 전송
+        $('#contactme_sendme_button').click(function(){
+
+        let contactme_namebox = $('#contactme_namebox').val();
+        let contactme_emailbox = $('#contactme_emailbox').val();
+        let contactme_message_textbox = $('#contactme_message_textbox').val();
+
+        let fd = new FormData();
+            fd.append("'contactme_namebox'",contactme_namebox);
+            fd.append("'contactme_emailbox'",contactme_emailbox);
+            fd.append("'contactme_message_textbox'",contactme_message_textbox);
+
+        console.log(contactme_namebox,contactme_emailbox,contactme_message_textbox);
+
+        $.ajax({
+            url: "/content/Sendmail",
+            data: fd,
+            method: "GET",
+            processData: false,
+            contentType: false,
+
+            success: function (data){
+                    console.log("성공");
+                },
+                error: function (request, status, error){
+                    console.log("에러");
+                },
+                complete: function (){
+                    console.log("완료");
+                }
+        });
+        });
+
+        // 프로필 변경
+        $('#profile_upload').click(function(){
+            $('#input_File_upload').click();
+        });
+
+        function profile_upload(){
+
+            let file = $('#input_File_upload')[0].files[0];
+
+            let email = "{{ user.email }}";
+
+            let fd = new FormData();
+            fd.append('file',file);
+            fd.append('email',email);
+
+            $.ajax({
+                url: "/user/profile/upload",
+                data: fd,
+                method: "POST",
+                processData: false,
+                contentType: false,
+
+                success: function (data){
+                    console.log("성공");
+                },
+                error: function (request, status, error){
+                    console.log("에러");
+                },
+                complete: function (){
+                    console.log("완료");
+                    location.replace("/");
+                }
+            });
+        }
     </script>
 </body>
 </html>
