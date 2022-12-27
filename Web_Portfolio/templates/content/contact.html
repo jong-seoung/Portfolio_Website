@@ -177,23 +177,21 @@
         // 메일 전송
         $('#contactme_sendme_button').click(function(){
 
-        let contactme_namebox = $('#contactme_namebox').val();
-        let contactme_emailbox = $('#contactme_emailbox').val();
-        let contactme_message_textbox = $('#contactme_message_textbox').val();
-
-        let fd = new FormData();
-            fd.append("'contactme_namebox'",contactme_namebox);
-            fd.append("'contactme_emailbox'",contactme_emailbox);
-            fd.append("'contactme_message_textbox'",contactme_message_textbox);
+        var contactme_namebox = $('#contactme_namebox').val();
+        var contactme_emailbox = $('#contactme_emailbox').val();
+        var contactme_message_textbox = $('#contactme_message_textbox').val();
 
         console.log(contactme_namebox,contactme_emailbox,contactme_message_textbox);
 
         $.ajax({
-            url: "/content/Sendmail",
-            data: fd,
+            url: "/content/sendmail",
+            dataType : "json",
+            data: {
+                contactme_namebox : contactme_namebox,
+                contactme_emailbox : contactme_emailbox,
+                contactme_message_textbox : contactme_message_textbox,
+                },
             method: "GET",
-            processData: false,
-            contentType: false,
 
             success: function (data){
                     console.log("성공");

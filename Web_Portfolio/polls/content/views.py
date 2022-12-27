@@ -69,12 +69,12 @@ class Sendmail(APIView):
         contactme_namebox = request.GET.get('contactme_namebox')
         contactme_emailbox = request.GET.get('contactme_emailbox')
         contactme_message_textbox = request.GET.get('contactme_message_textbox')
-        
+
         email = EmailMessage(
-            contactme_namebox,   # 제목
-            contactme_message_textbox,    # 내용
-            contactme_emailbox,  # 보내는 이메일 (settings에서 설정해서 작성안해도 됨)
-            to=['jjong015189@naver.com'],  # 받는 이메일 리스트
+            '웹에서 온 메일입니다',
+            '%s\n %s\n %s\n' %
+            (contactme_namebox, contactme_emailbox, contactme_message_textbox),
+            to=['jjong015189@naver.com'],  
         )
         email.send()
 
