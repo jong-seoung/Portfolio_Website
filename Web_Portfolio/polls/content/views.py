@@ -4,7 +4,7 @@ from polls.user.models import User
 from uuid import uuid4
 from config.settings import MEDIA_ROOT
 import os
-from .models import Project
+from .models import Project, Like
 from rest_framework.response import Response
 from django.core.mail import EmailMessage
 
@@ -27,16 +27,15 @@ class Main(APIView):
 
         for project in project_object_list:
             
-        #     like_count = Like.objects.filter(project_id=project.id, is_like=True).count()
-        #     check_liked = Like.objects.filter(project_id=project.id, email=email,check_like=True).exists()
+            like_count = Like.objects.filter(project_id=project.id, is_like=True).count()
+            is_liked = Like.objects.filter(project_id=project.id, email=email,is_like=True).exists()
             project_list.append(dict(id = project.id,
                 image=project.image,
                 content=project.content,
-        #         like_count=like_count,
+                like_count=like_count,
                 profile_image=user.profile_img,
                 nickname=user.nickname,
-        #         check_liked = check_liked,
-                hashtag=project.hashtag,
+                is_liked = is_liked,
                 project_name=project.project_name,
                 url_blog=project.url_blog,
                 url_github=project.url_github,
@@ -99,15 +98,34 @@ class UploadProject(APIView):
         image = uuid_name
         content = request.data.get('content')
         email = request.session.get('email',None)
-        hashtag = request.data.get('hashtag')
         project_name = request.data.get('project_name')
         url_blog = request.data.get('url_blog')
         url_github = request.data.get('url_github')
 
         # 피드에 저장
-        Project.objects.create(image=image, content=content,email=email,hashtag=hashtag,project_name=project_name,
+        Project.objects.create(image=image, content=content,email=email,project_name=project_name,
         url_github=url_github,url_blog=url_blog,)
 
 
         return Response(status=200)
 
+class ToggleLike(APIView):
+    def post(self,request):
+        project_id = request.data.get('project_id',None)
+        favorite_text = request.data.get('favorite_text',True)
+
+        if favorite_text == 'favorite_border':
+            is_like = True
+        else:
+            is_like = False
+        email = request.session.get('email',None)
+
+        like = Like.objects.filter(project_id=project_id,email=email).first()
+
+        if like:
+            like.is_like = is_like
+            like.save()
+        else:
+            Like.objects.create(project_id=project_id, is_like=is_like,email=email)
+
+        return Response(status=200)

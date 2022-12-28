@@ -119,10 +119,10 @@
                         </div>
                         <div style="display: flex; flex-direction: row; justify-content: left;">
                             <div style="width: 50%;">
-                                <input id="contactme_namebox" type="text" name="name" size="38%" value=" Write down your name" style="color: gainsboro; padding: 2px 2px;">
+                                <input id="contactme_namebox" type="text" name="name" size="38%" placeholder=" Write down your name" onfocus="this.placeholder=''" onblur="this.placeholder=' Write down your name'" name="text" style="padding: 2px 2px;">
                             </div>
                             <div style="width: 50%;">
-                                <input id="contactme_emailbox" type="text" name="Email" size="38%" value=" id@email.com" style="color: gainsboro; padding: 2px 2px;">
+                                <input id="contactme_emailbox" type="text" name="Email" size="38%" placeholder=" id@email.com" onfocus="this.placeholder=''" onblur="this.placeholder=' id@email.com'" name="text" style="padding: 2px 2px;">
                             </div>
                         </div>
                         <br>
@@ -130,8 +130,8 @@
                             Message
                         </div>
                         <div>
-                            <form >
-                                <textarea id="contactme_message_textbox"rows = "10" cols = "85%" name = "Message" style="color: gainsboro;"> Write down the message you want to send me</textarea>
+                            <form>
+                                <textarea id="contactme_message_textbox"rows = "10" cols = "85%" name = "Message" placeholder=" Write down the message you want to send me" onfocus="this.placeholder=''" onblur="this.placeholder=' Write down the message you want to send me'" name="text"></textarea>
                             </form>
                         </div>
                         <br>
@@ -161,19 +161,6 @@
         </div>
     </div>
     <script>
-        $("#contactme_message_textbox").click(function(){
-            $("#contactme_message_textbox").val("");
-            $("#contactme_message_textbox").css('color','black');
-        });
-        $("#contactme_namebox").click(function(){
-            $("#contactme_namebox").val("");
-            $("#contactme_namebox").css('color','black');
-        });
-        $("#contactme_emailbox").click(function(){
-            $("#contactme_emailbox").val("");
-            $("#contactme_emailbox").css('color','black');
-        });
-
         // 메일 전송
         $('#contactme_sendme_button').click(function(){
 
@@ -195,12 +182,14 @@
 
             success: function (data){
                     console.log("성공");
+                    
                 },
                 error: function (request, status, error){
                     console.log("에러");
                 },
                 complete: function (){
                     console.log("완료");
+                    alert("메일이 전송되었습니다.")
                 }
         });
         });

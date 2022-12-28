@@ -214,7 +214,7 @@
             <div>
                 <div style="border: solid; border-color: gainsboro; border-radius: 10px; margin-top: 258px; margin-bottom: 220px; height: 500px;">
                     <div style="text-align: left; margin: 5px 20px; font-size: 20px; font-weight: bolder;">
-                        SKILLS
+                        📚 SKILLS
                     </div>
                     <div style="border: 3px solid; border-color: gainsboro; margin: 0px 5px; border-radius: 10px; height: 90%;">
                         <div style="display: flex; flex-direction: column; justify-content: center; text-align: left; margin-left: 10px;">
@@ -313,8 +313,13 @@
                         <img style="height: 100%; width: 100%; object-fit: cover; margin: auto;" src="{% get_media_prefix %}{{project.image}}">
                     </div>
                     <div style="display: flex; flex-direction: row; justify-content: space-between; margin: 5px 10px;">
-                        <div>
-                            좋아요
+                        <div style="text-align: center; display: flex; flex-direction: row; justify-content: left;">
+                            <span id="favorite_{{project.id}}" project_id="{{project.id}}" class="favorite material-icons-outlined" style="margin-right: 5px; color: red; cursor: pointer;">
+                                {% if project.is_liked %}favorite{% else %}favorite_border{% endif %}
+                            </span>
+                            <span id="project_like_count">
+                            <b>{{project.like_count}}명</b>의 사람들이 이 글을 좋아합니다.
+                            </span>
                         </div>
                         <div>
                             <a href="{{project.url_git_hub}}" target="_blank" rel="noopener noreferrer"><img src="{% get_static_prefix %}img/git-hub-logo.png" style="width: 25px; height: 25px; object-fit: cover;"></a>
@@ -322,9 +327,9 @@
                         </div>
                     </div>
                     <div style="text-align: left; margin-left: 10px;">
-                        {{project.hashtag}}
-                        <br>
-                        {{project.content}}
+                        <div>   
+                        {{project.content|linebreaks}}
+                        </div>
                     </div>
                 </div>
             </div>
@@ -402,11 +407,7 @@
                             CONTENT
                             <textarea id="input_project_content" type="text" style="margin-top: 5px; width: 97%; height: 100%; height: 292px; vertical-align: top; text-align: left;" placeholder="content" onfocus="this.placeholder=''" onblur="this.placeholder='content'" name="text"></textarea>
                         </div>
-                        <div style="margin-top: 5px;">
-                            HASH TAG
-                            <input id="input_project_hashtag" type="text" size="38%" style="margin-top: 5px;" placeholder="#Python #Django #SQLite" onfocus="this.placeholder=''" onblur="this.placeholder='#Python #Django #SQLite'" name="text">
-                        </div>
-                    <button type="button" id= "project_create_button" class="btn btn-primary" style="width: 317px; height: 60px; margin: 7px;">
+                    <button type="button" id= "project_create_button" class="btn btn-primary" style="width: 317px; height: 40px; margin: 7px;">
                         Project Upload
                     </button>
                     </div>
@@ -419,32 +420,172 @@
 
     
 <script>
-        // 프로젝트 업로드 클릭 이벤트
-        $('#project_create_button').click(function(){ 
-        var email = '{{user.email}}';
-        var myemail = '{{myemail.email}}'
-        if(email==myemail){ 
-            alert("프로젝트 업로드 완료.");
-            let file = files[0];
-            let image = files[0].name;
-            let project_name =  $('#input_project_name').val();
-            let content =  $('#input_project_content').val();
-            let hashtag =  $('#input_project_hashtag').val();
-            let url_blog =  $('#input_project_url_blog').val();
-            let url_github =  $('#input_project_url_github').val();
+    // 좋아요
+    $(".favorite").click(function(event){
+        let project_id = event.target.attributes.getNamedItem('project_id').value;
+        let favorite_id = event.target.id;
+        let favorite_text = $.trim($('#'+favorite_id).html());
+        $('#project_like_count').load(location.href+' #project_like_count');
+        if (favorite_text == 'favorite'){
+            $('#'+favorite_id).html('favorite_border');
+        }else{ 
+            $('#'+favorite_id).html('favorite');
+        
+        }
 
-            let fd = new FormData();
+        $.ajax({
+            url: "/content/like",
+            data: {
+                project_id : project_id,
+                favorite_text : favorite_text
+            },
+            method: "POST",
 
-            fd.append('file',file);
-            fd.append('image',image);
-            fd.append('content',content);
-            fd.append('project_name',project_name);
-            fd.append('hashtag',hashtag);
-            fd.append('url_blog',url_blog);
-            fd.append('url_github',url_github);
+            success: function (data){
+                console.log("성공");
+            },
+            error: function (request, status, error){
+                console.log("에러");
+            },
+            complete: function (){
+                console.log("완료");
+            }
+        });
+    });
 
-            $.ajax({
-            url: "/content/upload",
+    // 프로젝트 업로드 클릭 이벤트
+    $('#project_create_button').click(function(){ 
+    var email = '{{user.email}}';
+    var myemail = '{{myemail.email}}'
+    if(email==myemail){ 
+        alert("프로젝트 업로드 완료.");
+        let file = files[0];
+        let image = files[0].name;
+        let project_name =  $('#input_project_name').val();
+        let content =  $('#input_project_content').val();
+        let url_blog =  $('#input_project_url_blog').val();
+        let url_github =  $('#input_project_url_github').val();
+
+        let fd = new FormData();
+
+        fd.append('file',file);
+        fd.append('image',image);
+        fd.append('content',content);
+        fd.append('project_name',project_name);
+        fd.append('url_blog',url_blog);
+        fd.append('url_github',url_github);
+
+        $.ajax({
+        url: "/content/upload",
+        data: fd,
+        method: "POST",
+        processData: false,
+        contentType: false,
+
+        success: function (data){
+            console.log("성공");
+        },
+        error: function (request, status, error){
+            console.log("에러");
+        },
+        complete: function (){
+            console.log("완료");
+            location.replace("");
+        }
+        });
+    }
+    else{
+        alert("권한이 없습니다");
+    }
+});   
+
+    // 아코디언 목록
+    $(".que").click(function() {
+    $(this).next(".anw").stop().slideToggle(300);
+    $(this).toggleClass('on').siblings().removeClass('on');
+    $(this).next(".anw").siblings(".anw").slideUp(300); // 1개씩 펼치기
+    });
+    
+    //클릭시 화면 맨 위로 이동
+    $('#scrollup_button').click(function(){
+        $html.animate({scrollTop : 0});
+        page = 1;
+    });
+    
+    // 메인화면 메뉴 클릭시 이동
+    $('#main_dropdown_menu_project').click(function(){
+        page = 4;
+        
+        var posTop = (page-1) * $(window).height();
+        $html.animate({scrollTop : posTop});
+    });
+
+    $('#main_dropdown_menu_skills').click(function(){
+        page = 3;
+        
+        var posTop = (page-1) * $(window).height();
+        $html.animate({scrollTop : posTop});
+    });
+
+    $('#main_dropdown_menu_archiving').click(function(){
+        page = 2;
+        
+        var posTop = (page-1) * $(window).height();
+        $html.animate({scrollTop : posTop});
+    });
+
+    $('#main_dropdown_menu_aboutme').click(function(){
+        page = 1;
+        
+        var posTop = (page-1) * $(window).height();
+        $html.animate({scrollTop : posTop});
+    });
+    
+    //기본 이벤트 제거
+    window.addEventListener("wheel", function(e){
+        e.preventDefault();
+        },{passive : false});
+
+    // 참조 요소
+    var $html = $("html");
+    var page = 1;
+    var lastPage = $(".content").length;
+    $html.animate({scrollTop:0},10);
+
+    // 메인 이벤트
+    $(window).on("wheel", function(e){
+
+    if($html.is(":animated")) return;
+
+    if(e.originalEvent.deltaY > 0){
+        if(page== lastPage) return;
+        page++;
+    }else if(e.originalEvent.deltaY < 0){
+        if(page == 1) return;
+        page--;
+    }
+
+    var posTop = (page-1) * $(window).height();
+    $html.animate({scrollTop : posTop});
+    });
+
+    // 프로필 변경
+    $('#profile_upload').click(function(){
+        $('#input_File_upload').click();
+    });
+
+    function profile_upload(){
+
+        let file = $('#input_File_upload')[0].files[0];
+
+        let email = "{{ user.email }}";
+
+        let fd = new FormData();
+        fd.append('file',file);
+        fd.append('email',email);
+
+        $.ajax({
+            url: "/user/profile/upload",
             data: fd,
             method: "POST",
             processData: false,
@@ -458,123 +599,14 @@
             },
             complete: function (){
                 console.log("완료");
-                location.replace("");
+                location.replace("/");
             }
-            });
-        }
-        else{
-            alert("권한이 없습니다");
-        }
-    });   
-
-        // 아코디언 목록
-        $(".que").click(function() {
-        $(this).next(".anw").stop().slideToggle(300);
-        $(this).toggleClass('on').siblings().removeClass('on');
-        $(this).next(".anw").siblings(".anw").slideUp(300); // 1개씩 펼치기
         });
-        
-        //클릭시 화면 맨 위로 이동
-        $('#scrollup_button').click(function(){
-            $html.animate({scrollTop : 0});
-            page = 1;
-        });
-        
-        // 메인화면 메뉴 클릭시 이동
-        $('#main_dropdown_menu_project').click(function(){
-            page = 4;
-            
-            var posTop = (page-1) * $(window).height();
-            $html.animate({scrollTop : posTop});
-        });
-
-        $('#main_dropdown_menu_skills').click(function(){
-            page = 3;
-            
-            var posTop = (page-1) * $(window).height();
-            $html.animate({scrollTop : posTop});
-        });
-
-        $('#main_dropdown_menu_archiving').click(function(){
-            page = 2;
-            
-            var posTop = (page-1) * $(window).height();
-            $html.animate({scrollTop : posTop});
-        });
-
-        $('#main_dropdown_menu_aboutme').click(function(){
-            page = 1;
-            
-            var posTop = (page-1) * $(window).height();
-            $html.animate({scrollTop : posTop});
-        });
-        
-        //기본 이벤트 제거
-        window.addEventListener("wheel", function(e){
-            e.preventDefault();
-            },{passive : false});
-
-        // 참조 요소
-        var $html = $("html");
-        var page = 1;
-        var lastPage = $(".content").length;
-        $html.animate({scrollTop:0},10);
-
-        // 메인 이벤트
-        $(window).on("wheel", function(e){
-
-        if($html.is(":animated")) return;
-
-        if(e.originalEvent.deltaY > 0){
-            if(page== lastPage) return;
-            page++;
-        }else if(e.originalEvent.deltaY < 0){
-            if(page == 1) return;
-            page--;
-        }
-
-        var posTop = (page-1) * $(window).height();
-        $html.animate({scrollTop : posTop});
-        });
-
-        // 프로필 변경
-        $('#profile_upload').click(function(){
-            $('#input_File_upload').click();
-        });
-
-        function profile_upload(){
-
-            let file = $('#input_File_upload')[0].files[0];
-
-            let email = "{{ user.email }}";
-
-            let fd = new FormData();
-            fd.append('file',file);
-            fd.append('email',email);
-
-            $.ajax({
-                url: "/user/profile/upload",
-                data: fd,
-                method: "POST",
-                processData: false,
-                contentType: false,
-
-                success: function (data){
-                    console.log("성공");
-                },
-                error: function (request, status, error){
-                    console.log("에러");
-                },
-                complete: function (){
-                    console.log("완료");
-                    location.replace("/");
-                }
-            });
-        }
+    }
 
 
-        // 프로젝트 이미지 업로드 창
-        $('#nav_bar_add_box').click(function(){
+    // 프로젝트 이미지 업로드 창
+    $('#nav_bar_add_box').click(function(){
         $('#first_modal').css({
         display : 'flex',
         });
@@ -606,14 +638,14 @@
         });
         }
     }
-    
+
     function uploadFiles(e){
         e.stopPropagation();
         e.preventDefault();
 
         e.dataTransfer = e.originalEvent.dataTransfer; //2
         files = e.target.files || e.dataTransfer.files;
-    
+
         if (files.length > 1) {
         alert('사진은 하나만 올릴 수 있습니다.');
         return;
