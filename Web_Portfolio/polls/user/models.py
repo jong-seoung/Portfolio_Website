@@ -36,7 +36,6 @@ class User(AbstractBaseUser):
     )
     profile_img = models.TextField()
     name = models.CharField(max_length=24)
-    email = models.EmailField(unique=True)
     nickname = models.CharField(max_length=24,unique=True)
     date_of_birth = models.DateField(blank=True, default=today, null=True)
     is_active = models.BooleanField(default=True)
