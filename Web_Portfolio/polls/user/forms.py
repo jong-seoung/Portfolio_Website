@@ -7,21 +7,12 @@ from django.utils.dateformat import DateFormat
 today = DateFormat(datetime.now()).format('Y-m-d')
 
 class UserCreationForm(forms.ModelForm):
-    # email = forms.EmailField(max_length=255)
-    # profile_img = forms.CharField()
-    # name = forms.CharField(max_length=24)
-    # nickname = forms.CharField(max_length=24)
-    # date_of_birth = forms.DateField()
-    # is_active = forms.BooleanField()
-    # is_admin = forms.BooleanField()
-    # temp='default_profile.png'
     password1 = forms.CharField(label='Password', widget=forms.PasswordInput)
-    password2 = forms.CharField(
-        label='Password confirmation', widget=forms.PasswordInput)
+    password2 = forms.CharField(label='Password confirmation', widget=forms.PasswordInput)
 
     class Meta:
         model = User
-        fields = ('email', 'date_of_birth')
+        fields = ('email',)
 
     def clean_password2(self):
         password1 = self.cleaned_data.get("password1")
@@ -44,7 +35,7 @@ class UserChangeForm(forms.ModelForm):
 
     class Meta:
         model = User
-        fields = ('email', 'password', 'date_of_birth',
+        fields = ('email', 'password',
                 'is_active', 'is_admin')
 
     def clean_password(self):

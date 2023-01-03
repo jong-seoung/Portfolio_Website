@@ -5,25 +5,28 @@ from django.utils.dateformat import DateFormat
 today = DateFormat(datetime.now()).format('Y-m-d')
 
 class UserManager(BaseUserManager):
-    def create_user(self, email, date_of_birth, password=None):
+    def create_user(self, email, name, nickname, password=None):
         if not email:
             raise ValueError('Users must have an email address')
 
         user = self.model(
             email=self.normalize_email(email),
-            date_of_birth=date_of_birth,
+            name = name,
+            nickname = nickname,
         )
 
         user.set_password(password)
         user.save(using=self._db)
         return user
 
-    def create_superuser(self, email, date_of_birth, password):
+    def create_superuser(self, email, name, nickname, password):
         user = self.create_user(
             email,
+            name = name,
+            nickname = nickname,
             password=password,
-            date_of_birth=date_of_birth,
         )
+        user.profile_img = "default_profile.png"
         user.is_admin = True
         user.save(using=self._db)
         return user
@@ -37,14 +40,13 @@ class User(AbstractBaseUser):
     profile_img = models.TextField()
     name = models.CharField(max_length=24)
     nickname = models.CharField(max_length=24,unique=True)
-    date_of_birth = models.DateField(blank=True, default=today, null=True)
     is_active = models.BooleanField(default=True)
     is_admin = models.BooleanField(default=False)
 
     objects = UserManager()
 
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['date_of_birth']
+    REQUIRED_FIELDS = ['name','nickname']
 
     class Meta:
         db_table = 'User'
