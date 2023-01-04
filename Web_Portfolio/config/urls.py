@@ -9,5 +9,6 @@ urlpatterns = [
     path('',Main.as_view()),
     path('content/',include('polls.content.urls')),
     path('user/',include('polls.user.urls')),
+    path('accounts/', include('allauth.urls')),
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
