@@ -76,9 +76,9 @@ class Uploadprofile(APIView):
 # 소셜 로그인
 
 # 소셜 로그인
-BASE_URL = 'http://localhost:8000/api/v1/accounts/rest-auth/'
+# BASE_URL = 'http://localhost:8000/api/v1/accounts/rest-auth/'
 # KAKAO_CALLBACK_URI = BASE_URL + 'kakao/callback/'
-NAVER_CALLBACK_URI = BASE_URL + 'naver/login/callback/'
+# NAVER_CALLBACK_URI = BASE_URL + 'naver/login/callback/'
 # GOOGLE_CALLBACK_URI = BASE_URL + 'google/callback/'
 # GITHUB_CALLBACK_URI = BASE_URL + 'github/callback/'
 
