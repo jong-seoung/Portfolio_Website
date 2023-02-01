@@ -1,0 +1,22 @@
+#vscode_img{
+    height: 17px;
+    width: 17px;
+}
+
+.nav{
+    height: 25px;
+    background-color: black;
+}
+
+.nav_list{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    color: white;
+    margin: 2px 7px;
+}
+
+.nav_list > div > a{
+    color: white;
+    margin: 0px 7px;
+}

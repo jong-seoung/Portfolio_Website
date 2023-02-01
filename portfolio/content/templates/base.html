@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <!-- 페이지 별 타이틀 공간 -->
+        {% block title %}
+        {%load static%}
+        <title>BASE</title>
+        {% endblock title %}
+
+        <!-- 페이지 별 메타 데이터 공간 -->
+        {% block meta %}
+        {% endblock meta %}
+
+        <!-- 페이지 별 스크립트 공간 -->
+        {% block script %}
+        {% endblock script %}
+
+        <!-- 페이지 별 스크립트 공간 -->
+        {% block css %}
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+        {% endblock css %}
+    </head>
+    <body>
+        {% block header %}
+        <link rel="stylesheet" href="{% static 'css/base.css' %}">
+        <nav class="nav">
+            <div class="nav_list">
+                <div>
+                    <img id="vscode_img" href="/" src="{% static 'img/favicon.png' %}">
+                    <a href="">File</a>
+                    <a href="">Edit</a> 
+                    <a href="">View</a> 
+                    <a href="">Go</a> 
+                    <a href="">Run</a> 
+                    <a href="">Terminal</a> 
+                    <a href="">Help</a>
+                </div>
+                <div>Beak-Jongseoung - Visual Studio Code</div>
+                <div>
+                    <a href="">English us</a>
+                    <a href="">Dark</a>
+                    <a href="">Login</a>
+                </div>
+            </div>
+        </nav>
+        {% if messages %}    <!-- 추가된 부분 시작 -->
+            {% for message in messages %}
+            <div class="alert alert-{{ message.tags }} alert-dismissible" role="alert">
+                {{ message }}
+            </div>
+            {% endfor %}
+        {% endif %}          <!-- 추가된 부분 끝 -->
+        {% endblock header %}
+        
+        {% block content %}
+        {% endblock content %}
+        </body>
+</html>

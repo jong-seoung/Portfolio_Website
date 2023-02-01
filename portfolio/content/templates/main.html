@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{%load static%}
+
+{% block title %}
+<title>Beak-Jongseoung│web portfolio</title>
+<link rel="shortcut icon" type="image/png" href="{% static 'img/favicon.png' %}"> 
+{% endblock title %}
+
+{% block css %}
+{{ block.super }}
+{% endblock css %}
+
+{% block content %}
+<table class="table table-striped table-bordered">
+</table>
+
+
+<a href="/article/{{ article.pk }}/update/"><button class="btn btn-primary" type="button">게시글 수정</button></a>
+{% endblock content %}
