@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from content.views import MainView, ProjectListView, ProjectDetailView, ProjectCreateUpdateView
+from content.views import Base, MainView, ProjectListView, ProjectDetailView, ProjectCreateUpdateView
 
 # static 
 from django.conf.urls.static import static
@@ -24,6 +24,7 @@ from django.conf import settings
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', MainView.as_view()),
+    path('base', Base.as_view()),
     path('project/', ProjectListView.as_view()),
     path('project/<project_id>/', ProjectDetailView.as_view()),
 path('project/<project_id>/update', ProjectCreateUpdateView.as_view()),

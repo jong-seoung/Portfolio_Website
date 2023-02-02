@@ -8,6 +8,13 @@ class MainView(TemplateView):                # 메인 화면
         ctx = {}
         return self.render_to_response(ctx)
 
+class Base(TemplateView):                # base
+    template_name = 'base.html'
+
+    def get(self, request, *args, **kwargs):
+        ctx = {}
+        return self.render_to_response(ctx)
+
 class ProjectListView(TemplateView):         # 게시글 목록
     template_name = 'base.html'
 
