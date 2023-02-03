@@ -1,0 +1,32 @@
+{% extends 'about.html' %}
+{%load static%}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/aboutlist.css' %}">
+<link rel="stylesheet" href="{% static 'css/about.css' %}">
+{% endblock css %}
+
+{% block layout_main %}
+<div class="Layout_main">
+    <div class="aboutme_layout_container">
+        <div class="title">
+            <h1 class="title_text">beak jongseoung</h1>
+        </div>
+        <div class="subtitle">
+            <h2 class="subtitle_text">About Me</h2>
+        </div>
+        <div class="aboutme_content_container">
+            <div class="personal_infos">
+                <div class="profile_image">
+                    <img class="profile_img"src="{% static 'img/profiletest.jpg' %}">
+                </div>
+            </div>
+        </div>
+        <div>
+            소개 글
+        </div>
+    </div>
+
+</div>
+
+{% endblock layout_main %}

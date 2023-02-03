@@ -71,6 +71,10 @@ html, body {
     height: calc( 100% - 30px );
 }
 
+.Sidebar_top{
+    margin-top: 10px;
+}
+
 .Sidebar_bottom{
     margin-bottom: 10px;
 }

@@ -4,9 +4,26 @@ from django.views.generic import TemplateView
 class MainView(TemplateView):                # 메인 화면
     template_name = 'main.html'
 
-    def get(self, request, *args, **kwargs):
-        ctx = {}
-        return self.render_to_response(ctx)
+class About(TemplateView):                # About
+    template_name = 'about.html'
+
+class Aboutme(TemplateView):              # About me
+    template_name = 'aboutme.html'
+    
+class Education(TemplateView):            # Education
+    template_name = 'edu.html'
+
+class Career(TemplateView):               # career
+    template_name = 'carerr.html'
+
+class FrontEnd(TemplateView):               # Front
+    template_name = 'front.html'
+
+class BackEnd(TemplateView):               # Back
+    template_name = 'back.html'
+
+class Etc(TemplateView):               # Etc
+    template_name = 'etc.html'
 
 class Base(TemplateView):                # base
     template_name = 'base.html'

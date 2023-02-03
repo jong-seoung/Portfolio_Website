@@ -1,0 +1,37 @@
+.title_text{
+    text-align: center;
+    color: white;
+}
+
+.subtitle_text{
+    color: white;
+    text-align: left;
+}
+
+.subtitle{
+    margin-bottom: 22px;
+}
+
+.aboutme_layout_container{
+    padding: 32px;
+}
+
+.aboutme_content_container{
+    padding: 0px 16px;
+}
+
+.personal_infos{
+    margin: 0px 0px 48px;
+    height: 300px;
+    width: 100%;
+}
+
+.profile_image{
+    height: 100%;
+}
+
+.profile_img {
+    height: 100%;
+    border-radius: 1.25rem;
+    box-shadow: 0 0 0 0.35rem  rgb(233, 233, 136);
+}

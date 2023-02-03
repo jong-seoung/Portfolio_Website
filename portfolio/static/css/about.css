@@ -1,0 +1,64 @@
+.Explorer_aboutme_list .Explorer_aboutme_text a{
+    color: #fff;
+    text-decoration: none;
+}
+
+.Explorer_aboutme_text_small .Explorer_skill_list a{
+    color: #fff;
+    text-decoration: none;
+}
+
+.Explorer_text_introduction{
+    color: white;
+    font-weight: 100;
+    margin-bottom: 20px;
+    padding: 8px;
+    text-transform: uppercase;
+}
+
+.Explorer_text_ProtFolio{
+    color: white;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.Explorer_aboutme_text{
+    align-items: center;
+    background-color: initial;
+    border: 0;
+    color: #fff;
+    cursor: pointer;
+    display: flex;
+    font-size: 14px;
+    font-weight: 300;
+    justify-self: start;
+    margin-bottom: 4px;
+    padding: 2px 8px;
+}
+
+.Explorer_aboutme_text .Explorer_icon {
+    margin-right: 6px;
+}
+
+.Explorer_aboutme_text_small{
+    align-items: center;
+    background-color: initial;
+    border: 0;
+    color: #fff;
+    cursor: pointer;
+    display: flex;
+    font-size: 12px;
+    font-weight: 300;
+    justify-self: start;
+}
+
+.Explorer_skill_list{
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 2px;
+    padding: 1px 16px;
+}
+
+.Explorer_aboutme_text_small .Explorer_icon_small{
+    margin-right: 6px;
+}

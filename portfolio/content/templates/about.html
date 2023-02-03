@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+{%load static%}
+
+{% block title %}
+<title>Beak-Jongseoung│About me</title>
+{% endblock title %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/main.css' %}">
+<link rel="stylesheet" href="{% static 'css/about.css' %}">
+{% endblock css %}
+
+{% block layout_main %}
+<div class="Layout_main">
+    <div class="Layout_main_box" >
+        <svg class="Layout_main_vscodeimg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+            <path d="M29.01,5.03,23.244,2.254a1.742,1.742,0,0,0-1.989.338L2.38,19.8A1.166,1.166,0,0,0,2.3,21.447c.025.027.05.053.077.077l1.541,1.4a1.165,1.165,0,0,0,1.489.066L28.142,5.75A1.158,1.158,0,0,1,30,6.672V6.605A1.748,1.748,0,0,0,29.01,5.03Z" style="fill:#262626"/>
+            <path d="M29.01,26.97l-5.766,2.777a1.745,1.745,0,0,1-1.989-.338L2.38,12.2A1.166,1.166,0,0,1,2.3,10.553c.025-.027.05-.053.077-.077l1.541-1.4A1.165,1.165,0,0,1,5.41,9.01L28.142,26.25A1.158,1.158,0,0,0,30,25.328V25.4A1.749,1.749,0,0,1,29.01,26.97Z" style="fill:#2e2e2e"/>
+            <path d="M23.244,29.747a1.745,1.745,0,0,1-1.989-.338A1.025,1.025,0,0,0,23,28.684V3.316a1.024,1.024,0,0,0-1.749-.724,1.744,1.744,0,0,1,1.989-.339l5.765,2.772A1.748,1.748,0,0,1,30,6.6V25.4a1.748,1.748,0,0,1-.991,1.576Z" style="fill:#383838"/></svg>
+        <div class="Layout_main_text">
+            <h1>Welcome to about me page.</h1>
+        </div>
+    </div>
+</div>
+{% endblock layout_main %}
+
+{% block explorer %}
+<div class="Explorer">
+    <div class="Explorer_text_introduction">INTRODUCTION</div>
+    <div class="Explorer_text_ProtFolio">PORTFOLIO</div>
+    <div class="Explorer_aboutme_list">
+        <div class="Explorer_aboutme_text">
+            <svg class="Explorer_icon" xmlns="http://www.w3.org/2000/svg" fill="rgb(255, 255, 255)" width="16" height="16" fill="currentColor" class="bi bi-file-earmark" viewBox="0 0 16 16">
+                <path d="M14 4.5V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h5.5L14 4.5zm-3 0A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5h-2z"/>
+            </svg>
+            <a href="/about/aboutme/">About me</a>
+        </div>
+        <div class="Explorer_aboutme_text">
+            <svg class="Explorer_icon" xmlns="http://www.w3.org/2000/svg" fill="rgb(255, 255, 255)" width="16" height="16" fill="currentColor" class="bi bi-folder" viewBox="0 0 16 16">
+                <path d="M.54 3.87.5 3a2 2 0 0 1 2-2h3.672a2 2 0 0 1 1.414.586l.828.828A2 2 0 0 0 9.828 3h3.982a2 2 0 0 1 1.992 2.181l-.637 7A2 2 0 0 1 13.174 14H2.826a2 2 0 0 1-1.991-1.819l-.637-7a1.99 1.99 0 0 1 .342-1.31zM2.19 4a1 1 0 0 0-.996 1.09l.637 7a1 1 0 0 0 .995.91h10.348a1 1 0 0 0 .995-.91l.637-7A1 1 0 0 0 13.81 4H2.19zm4.69-1.707A1 1 0 0 0 6.172 2H2.5a1 1 0 0 0-1 .981l.006.139C1.72 3.042 1.95 3 2.19 3h5.396l-.707-.707z"/>
+            </svg>
+            <span>Skill</span>
+        </div>
+        <div class="Explorer_aboutme_text_small">
+            <div>
+                <div class="Explorer_skill_list">
+                    <svg class="Explorer_aboutme_text_small" xmlns="http://www.w3.org/2000/svg" fill="rgb(255, 255, 255)" width="16" height="16" fill="currentColor" class="bi bi-file-earmark" viewBox="0 0 16 16">
+                        <path d="M14 4.5V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h5.5L14 4.5zm-3 0A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5h-2z"/>
+                    </svg>
+                    <a href="/about/skill/backend">Back End</a>
+                </div>
+                <div class="Explorer_skill_list">
+                    <svg class="Explorer_aboutme_text_small" xmlns="http://www.w3.org/2000/svg" fill="rgb(255, 255, 255)" width="16" height="16" fill="currentColor" class="bi bi-file-earmark" viewBox="0 0 16 16">
+                        <path d="M14 4.5V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h5.5L14 4.5zm-3 0A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5h-2z"/>
+                    </svg>
+                    <a href="/about/skill/frontend">Front End</a>
+                </div>
+                <div class="Explorer_skill_list">
+                    <svg class="Explorer_aboutme_text_small" xmlns="http://www.w3.org/2000/svg" fill="rgb(255, 255, 255)" width="16" height="16" fill="currentColor" class="bi bi-file-earmark" viewBox="0 0 16 16">
+                        <path d="M14 4.5V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h5.5L14 4.5zm-3 0A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5h-2z"/>
+                    </svg>
+                    <a href="/about/skill/etc">Etc..</a>
+                </div>
+            </div>
+        </div>
+        <div class="Explorer_aboutme_text">
+            <svg class="Explorer_icon" xmlns="http://www.w3.org/2000/svg" fill="rgb(255, 255, 255)" width="16" height="16" fill="currentColor" class="bi bi-file-earmark" viewBox="0 0 16 16">
+                <path d="M14 4.5V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h5.5L14 4.5zm-3 0A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5h-2z"/>
+            </svg>
+            <a href="/about/education/">education</a>
+        </div>
+        <div class="Explorer_aboutme_text">
+            <svg class="Explorer_icon" xmlns="http://www.w3.org/2000/svg" fill="rgb(255, 255, 255)" width="16" height="16" fill="currentColor" class="bi bi-file-earmark" viewBox="0 0 16 16">
+                <path d="M14 4.5V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h5.5L14 4.5zm-3 0A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5h-2z"/>
+            </svg>
+            <a href="/about/career/">career</a>
+        </div>
+    </div>
+</div>
+{% endblock explorer %}
