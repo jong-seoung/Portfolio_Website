@@ -1,11 +1,14 @@
 .title_text{
     text-align: center;
     color: white;
+    font-weight: 800;
+    font-size: 60px;
 }
 
 .subtitle_text{
     color: white;
     text-align: left;
+    
 }
 
 .subtitle{
@@ -13,17 +16,18 @@
 }
 
 .aboutme_layout_container{
-    padding: 32px;
+    padding: 64px;
 }
 
 .aboutme_content_container{
     padding: 0px 16px;
+    display: flex;
+    flex-direction: row;
 }
 
 .personal_infos{
     margin: 0px 0px 48px;
     height: 300px;
-    width: 100%;
 }
 
 .profile_image{
@@ -33,5 +37,54 @@
 .profile_img {
     height: 100%;
     border-radius: 1.25rem;
-    box-shadow: 0 0 0 0.35rem  rgb(233, 233, 136);
+    box-shadow: 0 0 0 0.35rem  rgb(255, 255, 255);
+}
+
+.personal_infos_detail{
+    padding: 10px 0px 0px 32px;
+}
+
+.personal_infos_name{
+    font-size: 26px;
+    margin-bottom: 30px;
+    color: rgb(255, 255, 255);
+    font-weight: 900;
+    display: inline-block;
+    /* box-shadow: inset 0px -5px 0 #dba747; height: 31px; */
+}
+
+.personal_infos_linkbox{
+    display: flex;
+    flex-direction: row;
+    margin: 0px 0px 18px;
+}
+
+.personal_infos_linktitle{
+    width: fit-content;
+    border: 1px solid white;
+    color: white;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 3px 5px;
+    margin-right: 8px;
+    min-width: 64px;
+    display: flex;
+    justify-content: center;
+    /* color: #ffffff;
+    font-size: 12px;
+    margin: 0px 8px 0px 0px;
+    padding: 0px 5px 0px; */
+}
+
+.personal_infos_link{
+    color: rgb(255, 255, 255);;
+    font-size: 16px;
+}
+
+.aboutme_personal_introduction{
+    display: flex;
+    flex-direction: column;
+    color: rgb(255, 255, 255);;
+    font-size: 26px;
 }

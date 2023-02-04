@@ -1,6 +1,13 @@
 from django.http import HttpResponse
 from django.views.generic import TemplateView
 
+class Base(TemplateView):                # base
+    template_name = 'base.html'
+
+    def get(self, request, *args, **kwargs):
+        ctx = {}
+        return self.render_to_response(ctx)
+
 class MainView(TemplateView):                # 메인 화면
     template_name = 'main.html'
 
@@ -25,15 +32,9 @@ class BackEnd(TemplateView):               # Back
 class Etc(TemplateView):               # Etc
     template_name = 'etc.html'
 
-class Base(TemplateView):                # base
-    template_name = 'base.html'
 
-    def get(self, request, *args, **kwargs):
-        ctx = {}
-        return self.render_to_response(ctx)
-
-class ProjectListView(TemplateView):         # 게시글 목록
-    template_name = 'base.html'
+class ProjectListView(TemplateView):         # 프로젝트
+    template_name = 'project.html'
 
     def get(self, request, *args, **kwargs):
         ctx = {}                             # 템플릿에 전달할 데이터

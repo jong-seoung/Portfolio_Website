@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from content.views import Base, MainView, About, Aboutme, Education, Career, FrontEnd, BackEnd, Etc
+from content.views import Base, MainView, About, Aboutme, Education, Career, FrontEnd, BackEnd, Etc, ProjectListView
 
 # ProjectListView, ProjectDetailView, ProjectCreateUpdateView
 
@@ -35,7 +35,7 @@ urlpatterns = [
     path('about/skill/frontend', FrontEnd.as_view()),
     path('about/skill/backend', BackEnd.as_view()),
     path('about/skill/etc', Etc.as_view()),
-    # path('project/', ProjectListView.as_view()),
+    path('project/', ProjectListView.as_view()),
     # path('project/<project_id>/', ProjectDetailView.as_view()),
     # path('project/<project_id>/update', ProjectCreateUpdateView.as_view()),
 ]
